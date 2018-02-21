@@ -4,7 +4,9 @@
 #include <iostream>
 #include <fstream>
 #include <unistd.h>
-#include <crypt.h>
+#include <windows.h>
+#include <wincrypt.h>
+//#include <crypt.h>
 #include <vector>
 #include <list>
 #include <string>

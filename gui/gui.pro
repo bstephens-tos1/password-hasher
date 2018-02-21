@@ -6,14 +6,15 @@ TEMPLATE = app
 TARGET = gui
 DEPENDPATH += .
 INCLUDEPATH += .
-LIBS += -lcrypt
+#LIBS += -lcrypt
+QT += widgets
 
 # Input
 HEADERS += adduser.h authenticate.h changepass.h mainwindow.h showhashtable.h ../hashtable.h
 FORMS += adduser.ui authenticate.ui changepass.ui mainwindow.ui showhashtable.ui
 SOURCES += adduser.cpp \
-           authenticate.cpp \
-           changepass.cpp \
-           mainwindow.cpp \
-           showhashtable.cpp \
-           ../hashtable.cpp
+	   authenticate.cpp \
+	   changepass.cpp \
+	   mainwindow.cpp \
+	   showhashtable.cpp \
+	   ../hashtable.cpp

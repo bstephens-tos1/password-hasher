@@ -3,7 +3,7 @@
 #include <cstring>
 #include <string>
 #include <utility>
-#include <crypt.h>
+//#include <crypt.h>
 #include <unistd.h>
 
 namespace cop4530
@@ -31,12 +31,14 @@ HashTable::~HashTable()
     }
 }
 
-// Encrypts a string *NOT WORKING CORRECTLY*
+// Encrypts a string
 string HashTable::encrypt(string password)
 {
-    char salt[] = "$1$########";
+    //char salt[] = "$1$########";
+    // TODO: actually encrypt here
+    //string output = crypt(password.c_str(), salt);
 
-    string output = crypt(password.c_str(), salt);
+    string output = password;
 
     return output;
 }
@@ -59,6 +61,7 @@ bool HashTable::findUser(pair< string, string > check)
 bool HashTable::addUser(pair< string, string > add_pair)
 {
     // Check to see if the user exists
+
     for (unsigned int i = 0; i < bucketVector.size(); i++) {
         for (list < pair <string, string> >::iterator itr = bucketVector[i].begin(); itr != bucketVector[i].end(); itr++) {
             if (itr->first == add_pair.first){
@@ -68,10 +71,12 @@ bool HashTable::addUser(pair< string, string > add_pair)
     }
 
     // User doesn't exist, so encrypt the password and add them
+cout << __LINE__ << endl;
     add_pair.second = parsePass(encrypt(add_pair.second));
-
+cout << __LINE__ << endl;
     // Add the user
     bucketVector[Index(add_pair.first)].push_back(add_pair);
+cout << __LINE__ << endl;
     return true;
 }
 
@@ -170,6 +175,8 @@ string HashTable::parsePass(string unparsed)
     string output;
 
     // output = the password AFTER "$1$########$"
+    // TODO: salt uses predefined value of 12 char length, but if salt changes
+    // then all these instances of hardcoded 12" are wrong.  Update this
     output = unparsed.substr(12);
 
     return output;
@@ -195,12 +202,13 @@ void HashTable::loadFile(string fileName)
             continue;
         }
         pair<string, string> parsed;
+cout << __LINE__ << endl;
         parsed = parseEntry(entry);
-
+cout << __LINE__ << endl;
         addUser(parsed);
-
+cout << __LINE__ << endl;
     }
-
+cout << __LINE__ << endl;
     in.close();
 }
 

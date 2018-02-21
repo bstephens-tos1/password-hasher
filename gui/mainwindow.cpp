@@ -11,20 +11,20 @@
 
 MainWindow::MainWindow()
 {
-	m_ui.setupUi(this);
+    m_ui.setupUi(this);
 
-	connect(m_ui.actionOpen, SIGNAL(triggered()), this, SLOT(openFile()));
-	connect(m_ui.actionSave_As, SIGNAL(triggered()), this, SLOT(saveFile()));
-	connect(m_ui.actionQuit, SIGNAL(triggered()), QApplication::instance(), SLOT(quit()));
-	m_ui.listWidget->setContextMenuPolicy(Qt::CustomContextMenu);
-	connect(m_ui.listWidget, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(showContextMenu(const QPoint&)));
+    connect(m_ui.actionOpen, SIGNAL(triggered()), this, SLOT(openFile()));
+    connect(m_ui.actionSave_As, SIGNAL(triggered()), this, SLOT(saveFile()));
+    connect(m_ui.actionQuit, SIGNAL(triggered()), QApplication::instance(), SLOT(quit()));
+    m_ui.listWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(m_ui.listWidget, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(showContextMenu(const QPoint&)));
 
-	m_contextMenu = new QMenu(this);
-	m_actionAddUser = m_contextMenu->addAction("Add User", this, SLOT(addUser()));
-	m_contextMenu->addSeparator();
-	m_actionAuthenticate = m_contextMenu->addAction("Authenticate", this, SLOT(authenticate()));
-	m_actionChangePassword = m_contextMenu->addAction("Change Password", this, SLOT(changePassword()));
-	m_actionRemoveUser = m_contextMenu->addAction("Delete", this, SLOT(removeUser()));
+    m_contextMenu = new QMenu(this);
+    m_actionAddUser = m_contextMenu->addAction("Add User", this, SLOT(addUser()));
+    m_contextMenu->addSeparator();
+    m_actionAuthenticate = m_contextMenu->addAction("Authenticate", this, SLOT(authenticate()));
+    m_actionChangePassword = m_contextMenu->addAction("Change Password", this, SLOT(changePassword()));
+    m_actionRemoveUser = m_contextMenu->addAction("Delete", this, SLOT(removeUser()));
 }
 
 void MainWindow::addUser()
@@ -129,10 +129,10 @@ void MainWindow::saveFile()
 
 int main(int argc, char **argv)
 {
-	QApplication app(argc, argv);
+    QApplication app(argc, argv);
 
-	MainWindow mainWindow;
-	mainWindow.show();
+    MainWindow mainWindow;
+    mainWindow.show();
 
-	return app.exec();
+    return app.exec();
 }

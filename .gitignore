@@ -1,1 +1,2 @@
-build-gui-Desktop-Qt_5_9_1_MinGW_32bit-Debug/*
+build-gui-Desktop_Qt_5_9_1_MinGW_32bit-Debug/
+gui/gui.pro.user
