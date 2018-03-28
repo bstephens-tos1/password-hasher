@@ -71,12 +71,10 @@ bool HashTable::addUser(pair< string, string > add_pair)
     }
 
     // User doesn't exist, so encrypt the password and add them
-cout << __LINE__ << endl;
     add_pair.second = parsePass(encrypt(add_pair.second));
-cout << __LINE__ << endl;
+
     // Add the user
     bucketVector[Index(add_pair.first)].push_back(add_pair);
-cout << __LINE__ << endl;
     return true;
 }
 
@@ -202,13 +200,9 @@ void HashTable::loadFile(string fileName)
             continue;
         }
         pair<string, string> parsed;
-cout << __LINE__ << endl;
         parsed = parseEntry(entry);
-cout << __LINE__ << endl;
         addUser(parsed);
-cout << __LINE__ << endl;
     }
-cout << __LINE__ << endl;
     in.close();
 }
 
